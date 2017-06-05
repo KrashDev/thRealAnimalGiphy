@@ -1,0 +1,23 @@
+body {
+	background-image: url("../images/darkmist.jpg");
+	background-size: cover;
+	margin:20px;
+	padding:20px;
+	color:#a3a3c2;
+}
+
+.container {
+
+
+}
+
+#animal-form {
+	
+	text-align:right;
+	font-size:20px;
+}
+
+#animaleButtons {
+	min-height:100px;
+
+}
