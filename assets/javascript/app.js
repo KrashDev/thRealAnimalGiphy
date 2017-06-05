@@ -1,8 +1,8 @@
 $("button").on("click", function() {
 
-      var person = $(this).attr("data-person");
+      var animal = $(this).attr("data-animal");
 
-      var APIKey = "dc6zaTOxFJmzC";
+//       var APIKey = "dc6zaTOxFJmzC";
 
       var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
         animal + "&api_key=dc6zaTOxFJmzC&limit=10";
@@ -26,12 +26,12 @@ $("button").on("click", function() {
 
             var p = $("<p>").text("Rating: " + rating);
 
-            var personImage = $("<img>");
+            var animalImage = $("<img>");
 
-            personImage.attr("src", results[i].images.fixed_height.url);
+            animalImage.attr("src", results[i].images.fixed_height.url);
 
             gifDiv.prepend(p);
-            gifDiv.prepend(personImage);
+            gifDiv.prepend(animalImage);
 
 			$("#gifs-appear-here").prepend(gifDiv);
 	    
@@ -41,8 +41,6 @@ $("button").on("click", function() {
 
 
 	
-//http://api.giphy.com/v1/gifs/search?q=&api_key=dc6zaTOxFJmzC
-// var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=dc6zaTOxFJmzC&limit=10";
 
 
 
