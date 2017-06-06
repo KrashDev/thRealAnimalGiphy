@@ -1,14 +1,14 @@
 $("button").on("click", function() {
 
-      var animal = $(this).attr("data-animal");
+    var animal = $(this).attr("data-animal");
 
-//       var APIKey = "dc6zaTOxFJmzC";
+	//var APIKey = "dc6zaTOxFJmzC";
 
-      var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
         animal + "&api_key=dc6zaTOxFJmzC&limit=10";
 
 
-
+    var animalArray = ["cow", "sheep", "turtle"];
 
 	$.ajax({
 	        url: queryURL,
@@ -34,6 +34,19 @@ $("button").on("click", function() {
             gifDiv.prepend(animalImage);
 
 			$("#gifs-appear-here").prepend(gifDiv);
+
+			// $('#submit') = document.createElement("BUTTON");
+			// document.$("#animaleButtons").appendChild();
+
+			function myFunction() {
+    		var btn = document.createElement("BUTTON");
+    		document.$("#animalButtons").appendChild(btn);
+			}
+
+			// function makeAnimal() {
+   //  		var btn = document.createElement("BUTTON");
+   //  		document.body.appendChild(btn);
+			// }
 	    
 	    	}
 		});
