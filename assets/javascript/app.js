@@ -1,4 +1,14 @@
+function playGif(imageID){
+	var animalImage = document.getElementById("#"+imageID);
+	if (animalImage.getAttribute("state") == "static") {
+		animalImage.src = animalImage.getAttribute("animsrc");
+		animalImage.setAttribute("state", "anim");
+	} else {
+		animalImage.src = animalImage.getAttribute("staticsrc");
+		animalImage.setAttribute("state", "static");
+	}
 	
+};
 	
 function animalBtnFunction(animal){
 	
@@ -13,27 +23,23 @@ function animalBtnFunction(animal){
 		}).done(function(response) {
 			console.log(response);
 			var results = response.data;
-			console.log(response.data);
+			console.log(response.data)
 			
 			for (var i = 0; i < results.length; i++) {
 				
-				$("#gifs-appear-here").attr("data-state", "still");
-
 				var gifDiv = $("<div class='animalButtons'>");
 				var rating = results[i].rating;
 				var p = $("<p>").text("Rating: " + rating);
 				var animalImage = $("<img>");
-				
-				animalImage.attr("src", results[i].images.fixed_height.url);
+				animalImage.attr("id", "#"+results[i].images.fixed_height.url);
+				animalImage.attr("src", results[i].images.fixed_height_still.url);
+				animalImage.attr("animsrc", results[i].images.fixed_height.url);
+				animalImage.attr("staticsrc", results[i].images.fixed_height_still.url)
+				animalImage.attr("state", "static");
+				animalImage.attr("onclick",'playGif("'+results[i].images.fixed_height.url+'")')
 				gifDiv.prepend(p);
 				gifDiv.prepend(animalImage);
 				$("#gifs-appear-here").prepend(gifDiv);
-				
-				function addAnAnimal() {
-					var btn = document.createElement("BUTTON");
-					document.$("#animalButtons").appendChild(btn);
-					console.log("");
-				}
 	
 			}
 		});
@@ -45,11 +51,6 @@ $(".animalBtn").on("click", function() {
 	animalBtnFunction(animal);
 });
 
-function addImageSearch(datAnimal){
-	
-	console.log("made it pop!");
-}
-
 $("#addAnimal").on("click", function() {
 	datAnimal = $("#animal-input").val();
 	var btn = document.createElement("BUTTON");
@@ -59,12 +60,6 @@ $("#addAnimal").on("click", function() {
 	btn.setAttribute('id', datAnimal + 'btn');
 	btn.setAttribute("onclick", 'animalBtnFunction("'+datAnimal+'")');
 	document.getElementById("animalBtns").appendChild(btn);	
-
-	// In order to make it so you can pause/start a gif you need to make 2 versions of the image. 
-	// In our GET request, you can find these 2 versions of the gif image.
-	// In this example the pathing to those images is: response.data.0.images.original and original_still.
-
-
 });
 
 
